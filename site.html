@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <title>Site App</title>
+		
+		<!-- Angular Material style sheet -->
+		<link rel="stylesheet" href="angular-material.min.css">
+		
+		  <!-- Angular Material requires Angular.js Libraries -->
+		<script type="text/javascript" src="angular.min.js"></script>
+		<script type="text/javascript" src="angular-animate.min.js"></script>
+		<script type="text/javascript" src="angular-aria.min.js"></script>
+		<script type="text/javascript" src="angular-messages.min.js"></script>
+
+		<!-- Angular Material Library -->
+		<script src="angular-material.min.js"></script>
+  	
+		<!-- Site Module  -->
+		<script type="text/javascript" src="site.js"></script>
+		<!-- Site style sheet  -->
+		<link rel="stylesheet" href="site.css">
+		
+    </head>
+    <body>
+	<div>
+		<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+		<md-card md-colors="::{backgroundColor: '{{theme}}-primary-700'}">
+		<md-card-title-text>
+			<span><h1 align="center">Trip Planner</h1></span>
+		</md-card-title-text>
+		</md-card>		
+		</section>
+	</div>
+	
+
+
+	<div ng-app='siteApp' ng-controller='siteController'>
+		<md-card>
+		<md-card-title-text>
+		
+		<div layout="row" layout-align="start" flex>
+			<md-input-container flex="50">
+				<label>From:</label>
+				<md-select ng-model="selectedSite" ng-change="update(selectedSite)">
+					<md-option ng-repeat="dep in departures" value="{{dep}}">{{dep}}</md-option>
+				</md-select>
+			</md-input-container>
+
+			<md-input-container flex="50">
+				<label>To:</label>
+				<md-select ng-model="selectedSite" ng-change="update(selectedSite)">
+					<md-option ng-repeat="arr in arrivals" value="{{arr}}">{{arr}}</md-option>
+				</md-select>
+			</md-input-container>
+		</div>
+	
+		<div>
+			<md-card>
+			<md-card-title>
+			<md-card-title-text>
+
+			<form name="userForm">
+			<div layout-gt-sm="row">
+				<md-input-container class="md-block" flex-gt-sm>
+				<label>Id</label>
+				<input ng-model="currentsite.id" ng-readonly="true">
+				</md-input-container>
+			</div>
+        
+			<div layout-gt-sm="row">
+				<md-input-container class="md-block" flex-gt-sm>
+				<label>Name</label>
+				<input ng-model="currentsite.name" ng-readonly="true">
+				</md-input-container>
+			</div>
+        
+			<div layout-gt-sm="row">
+				<md-input-container class="md-block" flex-gt-sm>
+				<label>Key</label>
+				<input ng-model="currentkey.key" ng-readonly="true">
+				</md-input-container>
+			</div>
+
+			</form>
+			</md-card-title>
+			</md-card-title-text>
+			</md-card>
+
+			<md-card>
+			<md-card-title-text>
+				<div layout-gt-sm="row">
+					<md-button ng-click="generate(selectedSite)" ng-disabled="false">Generate</md-button>
+					<md-button ng-click="delete(selectedSite)"   ng-disabled="false">Delete</md-button>
+				</div>  
+			</md-card-title-text>
+			</md-card>
+		
+		</div>
+		</md-card-title-text>	
+		</md-card>
+		
+	</div>
+	</body>
+</html>
