@@ -1,2 +1,2 @@
 # dijkstra
-Playing with dijkstra
+Playing with dijkstra .
